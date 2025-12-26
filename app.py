@@ -27,6 +27,7 @@ import inflect # pip install inflect
 #nltk.download('stopwords')
 #nltk.download('punkt')
 
+openai_api_key = st.secrets["OPENAI_API_KEY"]
 
 def remove_symbols(text):
     # Remove non-alphanumeric characters (keep only letters and numbers)
