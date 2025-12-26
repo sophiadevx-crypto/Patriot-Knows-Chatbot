@@ -18,15 +18,25 @@ from langchain.callbacks import get_openai_callback
 import os
 import re
 import fitz  # pip install pymupdf
-import nltk  # pip install nltk
+import nltk  # pip install 
+import logging
 from nltk.corpus import stopwords
 from nltk.tokenize import word_tokenize
 from collections import defaultdict
 import inflect # pip install inflect
 
-# Uncomment line below to download the stopwords dataset
+# Uncomment line below to download the dataset
 #nltk.download('stopwords')
 #nltk.download('punkt')
+
+nltk_resources = ['stopwords', 'punkt']
+
+for resource in nltk_resources:
+    try:
+        nltk.data.find(f'corpora/{resource}')
+    except LookupError:
+        nltk.download(resource, quiet=True)
+
 
 openai_api_key = st.secrets["OPENAI_API_KEY"]
 openai.api_key = openai_api_key
