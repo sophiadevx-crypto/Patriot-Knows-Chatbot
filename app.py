@@ -1,4 +1,5 @@
 import streamlit as st
+import openai
 from streamlit_chat import message
 from dotenv import load_dotenv
 from PyPDF2 import PdfReader
@@ -28,6 +29,7 @@ import inflect # pip install inflect
 #nltk.download('punkt')
 
 openai_api_key = st.secrets["OPENAI_API_KEY"]
+openai.api_key = openai_api_key
 
 def remove_symbols(text):
     # Remove non-alphanumeric characters (keep only letters and numbers)
